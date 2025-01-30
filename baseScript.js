@@ -4,7 +4,8 @@ const positionString = 'abcdefghijklmnopqrstuvwxyz0123456789'
 const password = 'rafael'
 const numCharacters = 16 - 1
 const rePositionString = 'abcdefghijklmnopqrstuvwxyz0123456789'
-const specialCharacter = '-'
+const specialCharacter = ''
+const isCaptalized = true
 
 // Take the string and just multiply it until have the number of characters
 function multiplyStyring(string, characters) {
@@ -71,18 +72,27 @@ function codeString(array, key) {
     return handle.join('')
 }
 
+// Format the string accordding user inputs
+function format( condition, string) {
+    let code = condition ? string.charAt(0).toUpperCase() + string.slice(1) : string
+    return code + specialCharacter
+}
+
 console.log(
-    codeString(
-        arraySum(
-            position(
-                multiplyStyring(
-                    password, 
-                    numCharacters
+        format(
+        isCaptalized, 
+        codeString(
+            arraySum(
+                position(
+                    multiplyStyring(
+                        password, 
+                        numCharacters
+                    ), 
+                    positionString
                 ), 
-                positionString
+                fibonacciSequence(numCharacters)
             ), 
-            fibonacciSequence(numCharacters)
-        ), 
-        rePositionString
+            rePositionString
+        )
     )
 )
