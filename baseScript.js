@@ -12,7 +12,7 @@ function multiplyStyring(string, characters) {
     while (handle.length <= characters) {
         handle += string
     }
-
+    console.log("multiplyStyring:", handle.slice(0,characters))
     return handle.slice(0,characters)
 }
 
@@ -23,6 +23,7 @@ function position(string, key) {
         handle.push(key.indexOf(string[i]))
     }
 
+    console.log("position:", handle)
     return handle
 }
 
@@ -38,6 +39,7 @@ function fibonacciSequence(n) {
         n1 = n2 
     }
 
+    console.log("fibonacciSequence:", sequence)
     return sequence
 }
 
@@ -48,5 +50,39 @@ function arraySum(array1, array2) {
         array.push(array1[i] + array2[i])
     }
 
-    console.log(array)
+    console.log("arraySum:", array)
+    return array
 }
+
+// Transform de sum in coded string
+function codeString(array, key) {
+
+    let handle = []
+
+    for (i in array) {
+        if (array[i] >= key.length) {
+            handle.push(key[array[i] % key.length])
+        } else {
+            handle.push(key[array[i]])
+        }
+    }
+
+    console.log("codeString:", handle.join(''))
+    return handle.join('')
+}
+
+console.log(
+    codeString(
+        arraySum(
+            position(
+                multiplyStyring(
+                    password, 
+                    numCharacters
+                ), 
+                positionString
+            ), 
+            fibonacciSequence(numCharacters)
+        ), 
+        rePositionString
+    )
+)
