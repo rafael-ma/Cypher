@@ -1,10 +1,10 @@
 // Variables
 
 const positionString = 'abcdefghijklmnopqrstuvwxyz0123456789'
-const password = 'rafael'
+const password = ''
 const numCharacters = 16 - 1
 const rePositionString = 'abcdefghijklmnopqrstuvwxyz0123456789'
-const specialCharacter = ''
+const specialCharacter = '-'
 const isCaptalized = true
 
 // Take the string and just multiply it until have the number of characters
