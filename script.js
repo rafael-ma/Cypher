@@ -1,13 +1,19 @@
-// Variables
-const positionString = 'abcdefghijklmnopqrstuvwxyz0123456789'
+// Prevent reload
+const form = document.getElementsByTagName('form')[0]
 
-const password = 'rafael'
-const rePositionString = 'abcdefghijklmnopqrstuvwxyz0123456789'
-const specialCharacter = '@'
-const numCharacters = specialCharacter != '' ? 16 - 1 : 16
-const isCaptalized = true
+form.addEventListener('submit', event => {
+    event.preventDefault()
 
-function cypher(positionString, password, rePositionString, numCharacters, specialCharacter, isCaptalized) {
+    // Variables
+    const positionString = 'abcdefghijklmnopqrstuvwxyz0123456789'
+    
+    // DOM Elements
+    const password = document.getElementById('passwordInput').value
+    const rePositionString = document.getElementById('posKeyInput').value
+    const specialCharacter = document.getElementById('specCaracInput').value
+    const numCharacters = specialCharacter != '' ? document.getElementById('numCharacInput').value - 1 : document.getElementById('numCharacInput').value
+    const isCaptalized = document.getElementById('checkInput').checked
+
     // Take the string and just multiply it until have the number of characters
     let newPassword = password
     while (newPassword.length <= numCharacters) {
@@ -15,14 +21,14 @@ function cypher(positionString, password, rePositionString, numCharacters, speci
     }
 
     newPassword = newPassword.slice(0, numCharacters)
-    console.log(newPassword)
+    // console.log(newPassword)
 
     // Gets the position of each string's character in position key
     let passwordPos = []
     for (i in newPassword) {
         passwordPos.push(positionString.indexOf(newPassword[i]))
     }
-    console.log(passwordPos)
+    // console.log(passwordPos)
 
     // Create a Fibonacci sequence with the number of terms declared
     let fibonacciSequence = []
@@ -34,14 +40,14 @@ function cypher(positionString, password, rePositionString, numCharacters, speci
         n0 = n1
         n1 = n2 
     }
-    console.log(fibonacciSequence)
+    // console.log(fibonacciSequence)
 
     //Create a new array by sum each term of the arrays
     let positionSum = []
     for (i in passwordPos) {
         positionSum.push(passwordPos[i] + fibonacciSequence[i])
     }
-    console.log(positionSum)
+    // console.log(positionSum)
 
     // Transform the sum in coded string
     let arrayString = []
@@ -54,14 +60,13 @@ function cypher(positionString, password, rePositionString, numCharacters, speci
         }
     }
     const string = arrayString.join('')
-    console.log(string)
+    // console.log(string)
     
     // Format the string accordding user inputs
     const formatted = isCaptalized ? string.charAt(0).toUpperCase() + string.slice(1) : string
-    console.log(formatted)
+    // console.log(formatted)
 
     const code = specialCharacter + formatted
     console.log(code)
-}
 
-cypher(positionString, password, rePositionString, numCharacters, specialCharacter, isCaptalized)
+})

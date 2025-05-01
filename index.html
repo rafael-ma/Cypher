@@ -10,7 +10,7 @@
         <h1>_cypher</h1>
     </header>
     <main>
-        <form action="">
+        <form>
             <div id="passwordDiv">
                 <label for="passwordInput">Palavra Chave</label> 
                 <input type="text" name="passwordInput" id="passwordInput">               
@@ -19,16 +19,22 @@
                 <label for="posKeyInput">Chave de codificação</label>
                 <input type="text" name="posKeyInput" id="posKeyInput">
             </div>
+            <div id="numCharacDiv">
+                <label for="numCharacInput">Número de caracteres</label>
+                <input type="number" min="1" name="numCharacInput" id="numCharacInput">
+            </div>
             <div id="specCaracDiv">
                 <label for="specCaracInput">Caractere especial</label>
-                <input type="text" name="specCaracInput" id="specCaracInput" placeholder="Opcional">
+                <input type="text" name="specCaracInput" id="specCaracInput" placeholder="Opcional" maxlength="1">
             </div>
             <div id="checkDiv">
                  <input type="checkbox" name="checkInput" id="checkInput">
                  <label for="checkInput">Ativar primeira letra maiúscula</label>
             </div>
-            <button>GERAR</button>
+            <button type="submit">GERAR</button>
         </form>
     </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
